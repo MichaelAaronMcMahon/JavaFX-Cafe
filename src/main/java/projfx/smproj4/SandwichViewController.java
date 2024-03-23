@@ -21,6 +21,8 @@ public class SandwichViewController {
     private Scene primaryScene;
     private Stage primaryStage;
 
+
+
     public void initialize() {
 
     }
@@ -41,8 +43,6 @@ public class SandwichViewController {
         primaryStage.setScene(primaryScene);
         primaryStage.show();
     }
-
-
 
 
 }

@@ -26,22 +26,28 @@
                 <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="192.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ListView fx:id="lv_flavor" onMouseClicked="#chooseFlavor" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <ComboBox prefWidth="150.0" promptText="Select Donut Type" />
+                        <ComboBox fx:id="cmb_type" onAction="#setFlavorList" prefWidth="150.0" promptText="Select Donut Type" />
                      </children>
                   </HBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                      <children>
                         <Label text="Sub total" />
-                        <TextField />
+                        <TextField fx:id="subTotal" />
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" text="Add to order" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button fx:id="displayMainButton" mnemonicParsing="false" onAction="#displayMain" prefHeight="53.0" prefWidth="150.0" text="Back to main menu" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <ComboBox fx:id="cmb_quantity" onAction="#chooseQuantity" prefWidth="150.0" promptText="Quantity" />
+                     </children></HBox>
+                  <Button mnemonicParsing="false" onAction="#addToOrder" text="Add to order" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Quantity" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
