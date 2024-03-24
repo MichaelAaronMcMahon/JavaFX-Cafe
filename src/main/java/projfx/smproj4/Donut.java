@@ -9,6 +9,11 @@ public class Donut extends MenuItem{
     public double price() {
         return this.quantity * this.donutType.getTypePrice();
     }
+    @Override
+    public String toString(){
+        String rstring = this.donutType.getDonutType() + ", " + this.donutFlavor.getDonutFlavor() + ", " + String.valueOf(this.quantity);
+        return rstring;
+    }
 
     public DonutFlavor getDonutFlavor() {
         return donutFlavor;

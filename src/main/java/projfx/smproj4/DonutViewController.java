@@ -34,6 +34,11 @@ public class DonutViewController {
     private DonutFlavor donutFlavorEnum;
     private int quantity;
     private Donut donut;
+    private Order order;
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     public void initialize() {
         typeList = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Hole");
@@ -153,6 +158,9 @@ public class DonutViewController {
         //String order = this.donutTypeEnum.getDonutType() + this.donutFlavorEnum.getDonutType() + String.valueOf(this.quantity);
         //subTotal.setText(order);
         //MenuItem donut = new Donut()
+        //order.add
+        this.order.add(donut);
+        //System.out.println(order.getMenuList()[0].price());
     }
 
 

@@ -2,9 +2,9 @@ package projfx.smproj4;
 
 public enum SandwichOption {
 
-    BEEF("Beef"),
     CHICKEN("Chicken"),
-    FISH("Fish");
+    FISH("Fish"),
+    BEEF("Beef");
 
     private final String swOption;
 

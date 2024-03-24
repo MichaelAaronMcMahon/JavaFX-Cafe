@@ -16,6 +16,11 @@ import java.io.IOException;
 public class HelloController {
     private Stage primaryStage;
     private Scene primaryScene;
+    private Order order = new Order(1);
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     public void setPrimaryStage(Stage stage, Scene scene) {
         primaryStage = stage;
@@ -33,6 +38,7 @@ public class HelloController {
             primaryStage.setScene(scene);
             DonutViewController donutViewController = loader.getController();
             donutViewController.setMainController(this, view1, primaryStage, primaryScene);
+            donutViewController.setOrder(order);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -113,6 +119,8 @@ public class HelloController {
             primaryStage.setScene(scene);
             CurrentOrderViewController currentOrderViewController = loader.getController();
             currentOrderViewController.setMainController(this, view1, primaryStage, primaryScene);
+            currentOrderViewController.setOrder(order);
+            //System.out.println(order.getMenuList()[0].price());
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");

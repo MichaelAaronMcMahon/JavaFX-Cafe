@@ -39,7 +39,7 @@ public enum DonutFlavor {
      * Return donut type as a String
      * @return String
      */
-    public String getDonutType(){
+    public String getDonutFlavor(){
         return donutFlavor;
     }
     public static void main(String[] args){
