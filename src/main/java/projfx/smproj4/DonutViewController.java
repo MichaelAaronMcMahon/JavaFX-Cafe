@@ -33,6 +33,7 @@ public class DonutViewController {
     private DonutType donutTypeEnum;
     private DonutFlavor donutFlavorEnum;
     private int quantity;
+    private Donut donut;
 
     public void initialize() {
         typeList = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Hole");
@@ -42,6 +43,8 @@ public class DonutViewController {
         quantityList = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         cmb_type.setItems(typeList);
         cmb_quantity.setItems(quantityList);
+        this.donut = new Donut();
+        this.quantity = 1;
     }
 
     public void setMainController (HelloController controller,
@@ -64,99 +67,92 @@ public class DonutViewController {
     public void setFlavorList(){
         //String donutType = cmb_type.getTypeSelector();
         String donutType = cmb_type.getSelectionModel().getSelectedItem();
+
         if(donutType.equalsIgnoreCase("Yeast Donut")){
             lv_flavor.setItems(yeastList);
             this.donutTypeEnum = DonutType.valueOf("YEASTDONUT");
+            this.donut.setDonutType(DonutType.valueOf("YEASTDONUT"));
         }
         if(donutType.equalsIgnoreCase("Cake Donut")){
             lv_flavor.setItems(cakeList);
             this.donutTypeEnum = DonutType.valueOf("CAKEDONUT");
+            this.donut.setDonutType(DonutType.valueOf("CAKEDONUT"));
         }
         if(donutType.equalsIgnoreCase("Donut Hole")){
             lv_flavor.setItems(holeList);
             this.donutTypeEnum = DonutType.valueOf("DONUTHOLE");
+            this.donut.setDonutType(DonutType.valueOf("DONUTHOLE"));
         }
+
+        subTotal.setText(String.valueOf(this.donut.price()));
     }
 
     @FXML public void chooseFlavor(){
         String donutFlavor = lv_flavor.getSelectionModel().getSelectedItem();
         if(donutFlavor.equalsIgnoreCase("Boston Cream")){
             this.donutFlavorEnum = DonutFlavor.valueOf("BOSTONCREAM");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("BOSTONCREAM"));
         }
         if(donutFlavor.equalsIgnoreCase("Jelly-Filled")){
             this.donutFlavorEnum = DonutFlavor.valueOf("JELLYFILLED");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("JELLYFILLED"));
         }
         if(donutFlavor.equalsIgnoreCase("Powdered")){
             this.donutFlavorEnum = DonutFlavor.valueOf("POWDERED");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("POWDERED"));
         }
         if(donutFlavor.equalsIgnoreCase("Old-Fashioned")){
             this.donutFlavorEnum = DonutFlavor.valueOf("OLDFASHIONED");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("OLDFASHIONED"));
         }
         if(donutFlavor.equalsIgnoreCase("Chocolate")){
             this.donutFlavorEnum = DonutFlavor.valueOf("CHOCOLATE");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("CHOCOLATE"));
         }
         if(donutFlavor.equalsIgnoreCase("Blueberry")){
             this.donutFlavorEnum = DonutFlavor.valueOf("BLUEBERRY");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("BLUEBERRY"));
         }
         if(donutFlavor.equalsIgnoreCase("Pumpkin")){
             this.donutFlavorEnum = DonutFlavor.valueOf("PUMPKIN");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("PUMPKIN"));
         }
         if(donutFlavor.equalsIgnoreCase("Strawberry")){
             this.donutFlavorEnum = DonutFlavor.valueOf("STRAWBERRY");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("STRAWBERRY"));
         }
         if(donutFlavor.equalsIgnoreCase("Red Velvet")){
             this.donutFlavorEnum = DonutFlavor.valueOf("REDVELVET");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("REDVELVET"));
         }
         if(donutFlavor.equalsIgnoreCase("Glazed")){
             this.donutFlavorEnum = DonutFlavor.valueOf("GLAZED");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("GLAZED"));
         }
         if(donutFlavor.equalsIgnoreCase("Raspberry")){
             this.donutFlavorEnum = DonutFlavor.valueOf("RASPBERRY");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("RASPBERRY"));
         }
         if(donutFlavor.equalsIgnoreCase("Sprinkled")){
             this.donutFlavorEnum = DonutFlavor.valueOf("SPRINKLED");
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("SPRINKLED"));
         }
     }
 
     @FXML public void chooseQuantity(){
         String quantityStr = cmb_quantity.getSelectionModel().getSelectedItem();
-        if(quantityStr.equalsIgnoreCase("1")){
-            this.quantity = 1;
-        }
-        if(quantityStr.equalsIgnoreCase("2")){
-            this.quantity = 2;
-        }
-        if(quantityStr.equalsIgnoreCase("3")){
-            this.quantity = 3;
-        }
-        if(quantityStr.equalsIgnoreCase("4")){
-            this.quantity = 4;
-        }
-        if(quantityStr.equalsIgnoreCase("5")){
-            this.quantity = 5;
-        }
-        if(quantityStr.equalsIgnoreCase("6")){
-            this.quantity = 6;
-        }
-        if(quantityStr.equalsIgnoreCase("7")){
-            this.quantity = 7;
-        }
-        if(quantityStr.equalsIgnoreCase("8")){
-            this.quantity = 8;
-        }
-        if(quantityStr.equalsIgnoreCase("9")){
-            this.quantity = 9;
-        }
-        if(quantityStr.equalsIgnoreCase("10")){
-            this.quantity = 10;
-        }
+        int quantity = Integer.parseInt(quantityStr);
+        this.donut.setQuantity(quantity);
+        this.quantity = quantity;
+        subTotal.setText(String.valueOf(this.donut.price()));
     }
 
     @FXML
     private TextField subTotal;
     @FXML public void addToOrder(){
-        String order = this.donutTypeEnum.getDonutType() + this.donutFlavorEnum.getDonutType() + String.valueOf(this.quantity);
-        subTotal.setText(order);
+        //String order = this.donutTypeEnum.getDonutType() + this.donutFlavorEnum.getDonutType() + String.valueOf(this.quantity);
+        //subTotal.setText(order);
+        //MenuItem donut = new Donut()
     }
 
 
