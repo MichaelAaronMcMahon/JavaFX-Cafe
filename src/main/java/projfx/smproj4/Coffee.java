@@ -6,6 +6,17 @@ public class Coffee extends MenuItem{
     private CoffeeCupSize cupSize;
     private int quantity;
     private int index;
+    private int ID;
+
+    @Override
+    public int getID() {
+        return ID;
+    }
+
+    @Override
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public Coffee(){
         super();

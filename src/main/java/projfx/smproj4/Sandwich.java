@@ -7,6 +7,17 @@ public class Sandwich extends MenuItem{
     private SandwichAddon [] addons;
     private int quantity;
     private int index;
+    private int ID;
+
+    @Override
+    public int getID() {
+        return ID;
+    }
+
+    @Override
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public Sandwich(SandwichOption option, SandwichBread bread, int quantity){
         super();

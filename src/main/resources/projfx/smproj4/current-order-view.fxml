@@ -31,19 +31,19 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
                         <Label text="sub-total" />
-                        <TextField />
+                        <TextField fx:id="tf_subTotal" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label text="sales tax" />
-                        <TextField />
+                        <TextField fx:id="tf_salesTax" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Label text="total amount" />
-                        <TextField />
+                        <TextField fx:id="tf_totalAmount" />
                      </children>
                   </HBox>
                </children>

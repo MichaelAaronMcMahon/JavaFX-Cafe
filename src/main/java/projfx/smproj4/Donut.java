@@ -5,6 +5,18 @@ public class Donut extends MenuItem{
     private DonutFlavor donutFlavor;
     private DonutType donutType;
     private int quantity = 1;
+    private int ID;
+
+    @Override
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    @Override
+    public int getID() {
+        return ID;
+    }
+
     @Override
     public double price() {
         return this.quantity * this.donutType.getTypePrice();
