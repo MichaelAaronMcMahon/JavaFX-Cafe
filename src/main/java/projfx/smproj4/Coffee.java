@@ -45,6 +45,17 @@ public class Coffee extends MenuItem{
         index++;
         return true;
     }
+
+    @Override
+    public String toString(){
+        String rstring =this.cupSize.getCupSize() + ", ";
+        for(int i=0; i<this.coffeeAddins.length; i++){
+            rstring += this.coffeeAddins[i].getCoffeeAddin();
+            rstring += ", ";
+        }
+        rstring += this.quantity;
+        return rstring;
+    }
     @Override
     public double price() {
 
