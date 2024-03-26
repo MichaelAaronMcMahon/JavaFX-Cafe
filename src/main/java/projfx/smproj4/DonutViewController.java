@@ -148,6 +148,7 @@ public class DonutViewController {
         String quantityStr = cmb_quantity.getSelectionModel().getSelectedItem();
         int quantity = Integer.parseInt(quantityStr);
         this.donut.setQuantity(quantity);
+        this.donut.setDonutType(this.donutTypeEnum);
         this.quantity = quantity;
         subTotal.setText(String.valueOf(this.donut.price()));
     }
@@ -159,7 +160,11 @@ public class DonutViewController {
         //subTotal.setText(order);
         //MenuItem donut = new Donut()
         //order.add
+        this.donut.setDonutType(this.donutTypeEnum);
+        this.donut.setDonutFlavor(this.donutFlavorEnum);
+        this.donut.setQuantity(this.quantity);
         this.order.add(donut);
+        this.donut = new Donut();
         //System.out.println(order.getMenuList()[0].price());
     }
 

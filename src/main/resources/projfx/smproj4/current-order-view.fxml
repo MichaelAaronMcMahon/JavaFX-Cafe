@@ -51,7 +51,7 @@
             <ListView fx:id="lv_menuItems" layoutX="21.0" layoutY="109.0" prefHeight="232.0" prefWidth="500.0" />
             <HBox layoutX="21.0" layoutY="341.0" prefHeight="66.0" prefWidth="549.0">
                <children>
-                  <Button mnemonicParsing="false" text="Remove selected item" />
+                  <Button mnemonicParsing="false" onAction="#removeItem" text="Remove selected item" />
                   <Button mnemonicParsing="false" text="Place order" />
                </children>
             </HBox>

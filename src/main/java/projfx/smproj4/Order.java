@@ -27,25 +27,45 @@ public class Order {
     }
 
     public void add(MenuItem menuItem){
-        if(this.addIndex == this.menuList.length){
+        /*if(this.addIndex == this.menuList.length){
+            System.out.println("menulist grow");
             MenuItem menuGrow[] = new MenuItem[addIndex + 10];
             for (int i=0; i< menuList.length; i++){
                 menuGrow[i] = this.menuList[i];
             }
             this.menuList = menuGrow;
-        }
-        //menuItem.setID(this.menuItemId);
-        //this.menuItemId ++;
+        }*/
+        menuItem.setID(this.menuItemId);
+        this.menuItemId ++;
         menuList[this.addIndex] = menuItem;
         this.addIndex ++;
         printMenuList();
         System.out.println("\n");
     }
 
+    public void remove(MenuItem menuItem){
+        int removeID = menuItem.getID();
+        for(int i=0; i<this.addIndex; i++){
+            if (this.menuList[i].getID() == removeID){
+                this.menuList[i] = null;
+                //if(i>0){
+                for(int j=(i+1); j<this.addIndex; j++){
+                    this.menuList[j-1] = this.menuList[j];
+                    this.menuList[j] = null;
+                }
+                //}
+                this.addIndex --;
+
+            }
+
+        }
+    }
+
     public void printMenuList(){
         for (int i=0; i<this.addIndex; i++){
             System.out.println(this.menuList[i].toString());
         }
+        System.out.println("end of order");
     }
 
 }

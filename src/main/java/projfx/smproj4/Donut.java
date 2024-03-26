@@ -23,7 +23,7 @@ public class Donut extends MenuItem{
     }
     @Override
     public String toString(){
-        String rstring = this.donutType.getDonutType() + ", " + this.donutFlavor.getDonutFlavor() + ", " + String.valueOf(this.quantity);
+        String rstring = this.donutType.getDonutType() + ", " + this.donutFlavor.getDonutFlavor() + ", " + String.valueOf(this.quantity)+ ", " + String.valueOf(this.ID);
         return rstring;
     }
 

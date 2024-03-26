@@ -46,9 +46,6 @@ public class CurrentOrderViewController {
         lv_menuItems.setItems(menuList);
         //double subTotal = computeSubTotal();
         setSubTotal();
-
-
-
     }
 
     private void setSubTotal(){
@@ -58,15 +55,17 @@ public class CurrentOrderViewController {
         for(int i=0; i<orderLength; i++){
             subTotal += this.order.getMenuList()[i].price();
         }
-
         tf_subTotal.setText(String.valueOf(subTotal));
         tf_salesTax.setText(String.valueOf(subTotal * 0.06625));
         tf_totalAmount.setText(String.valueOf(subTotal + subTotal * 0.06625));
 
     }
-
+    @FXML Button removeButton;
     @FXML public void removeItem(){
-        //MenuItem removeItem = lv_menuItems.getSelectionModel().getSelectedItem();
+        MenuItem removeItem = lv_menuItems.getSelectionModel().getSelectedItem();
+        this.order.remove(removeItem);
+        setOrder(this.order);
+
 
     }
 
