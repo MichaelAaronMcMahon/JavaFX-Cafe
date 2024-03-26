@@ -7,26 +7,30 @@ public class Coffee extends MenuItem{
     private int quantity;
     private int index;
 
-    public Coffee(CoffeeCupSize cupSize, int quantity){
+    public Coffee(){
         super();
         this.coffeeAddins = new CoffeeAddin[5];
-        this.cupSize = cupSize;
-        this.quantity = quantity;
         this.index = 0;
     }
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+    public void setCupSize(CoffeeCupSize cupSize){
+        this.cupSize = cupSize;
+    }
 
-    public boolean addAddin(CoffeeAddin addin){
+    public boolean addAddin(String addin){
 
         if (index == 5){//I will delete the print statement later, just have it for testing
             System.out.println("addin list is full");
             return false;
         }
         for (CoffeeAddin coffeeAddin:coffeeAddins){
-            if (coffeeAddin == addin){
+            if (coffeeAddin == CoffeeAddin.valueOf(addin.toUpperCase())){
                 return false;
             }
         }
-        coffeeAddins[index] = addin;
+        coffeeAddins[index] = CoffeeAddin.valueOf(addin.toUpperCase());
         index++;
         return true;
     }
