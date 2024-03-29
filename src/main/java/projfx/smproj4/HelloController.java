@@ -75,7 +75,7 @@ public class HelloController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("sandwich-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 400);
+            Scene scene = new Scene(root, 600, 400);
             primaryStage.setScene(scene);
             SandwichViewController sandwichViewController = loader.getController();
             sandwichViewController.setMainController(this, view1, primaryStage, primaryScene);
