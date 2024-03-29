@@ -1,5 +1,7 @@
 package projfx.smproj4;
 
+import javafx.collections.ObservableList;
+
 public class Coffee extends MenuItem{
 
     private CoffeeAddin [] coffeeAddins;
@@ -20,8 +22,8 @@ public class Coffee extends MenuItem{
 
     public Coffee(){
         super();
-        this.coffeeAddins = new CoffeeAddin[5];
-        this.index = 0;
+        //this.coffeeAddins = new CoffeeAddin[5];
+        //this.index = 0;
     }
     public void setQuantity(int quantity){
         this.quantity = quantity;
@@ -30,19 +32,17 @@ public class Coffee extends MenuItem{
         this.cupSize = cupSize;
     }
 
-    public boolean addAddin(String addin){
+    public boolean addAddin(ObservableList<String> addin){
 
-        if (index == 5){//I will delete the print statement later, just have it for testing
-            System.out.println("addin list is full");
-            return false;
+        this.index = 0;
+        this.coffeeAddins = new CoffeeAddin[5];
+
+        for (String add:addin){
+            add = add.replaceAll("\\s+", "");
+            coffeeAddins[index] = CoffeeAddin.valueOf(add.toUpperCase());
+            index++;
         }
-        for (CoffeeAddin coffeeAddin:coffeeAddins){
-            if (coffeeAddin == CoffeeAddin.valueOf(addin.toUpperCase())){
-                return false;
-            }
-        }
-        coffeeAddins[index] = CoffeeAddin.valueOf(addin.toUpperCase());
-        index++;
+
         return true;
     }
 
@@ -62,6 +62,6 @@ public class Coffee extends MenuItem{
         double cupPriceMultiplier = this.cupSize.ordinal() * 0.50;
         double addinMultiplier = this.index * 0.30;
 
-        return (cupPriceMultiplier + addinMultiplier + 1.99) * quantity;
+         return (cupPriceMultiplier + addinMultiplier + 1.99) * quantity;
     }
 }

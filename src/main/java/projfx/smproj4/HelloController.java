@@ -55,7 +55,7 @@ public class HelloController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("coffee-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 400);
+            Scene scene = new Scene(root, 550, 400);
             primaryStage.setScene(scene);
             CoffeeViewController coffeeViewController = loader.getController();
             coffeeViewController.setMainController(this, view1, primaryStage, primaryScene);

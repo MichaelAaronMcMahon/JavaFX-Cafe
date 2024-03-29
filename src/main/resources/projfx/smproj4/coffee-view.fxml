@@ -55,9 +55,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Place Order" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#addToOrder" text="Place Order" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
-                        <Insets left="100.0" />
+                        <Insets left="142.0" />
                      </GridPane.margin></Button>
                   <ComboBox fx:id="cmb_cupSize" onAction="#setCupSizeList" prefHeight="26.0" prefWidth="100.0" promptText="Cup Size" GridPane.rowIndex="1">
                      <GridPane.margin>
@@ -76,15 +76,18 @@
                            <font>
                               <Font size="20.0" />
                            </font>
-                        </Label>
-                        <ListView fx:id="all_addins" prefHeight="200.0" prefWidth="200.0">
                            <VBox.margin>
-                              <Insets right="20.0" />
+                              <Insets right="70.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView fx:id="all_addins" prefHeight="123.0" prefWidth="216.0">
+                           <VBox.margin>
+                              <Insets right="70.0" />
                            </VBox.margin></ListView>
                      </children></VBox>
                   <TextField fx:id="sub_total" prefHeight="26.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
-                        <Insets right="20.0" />
+                        <Insets right="70.0" />
                      </GridPane.margin>
                   </TextField>
                </children>

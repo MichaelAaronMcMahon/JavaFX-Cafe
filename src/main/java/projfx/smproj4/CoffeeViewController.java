@@ -5,6 +5,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -59,11 +61,17 @@ public class CoffeeViewController {
         all_addins.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         this.coffee = new Coffee();
         this.quantity = 1;
-        all_addins.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-
+        this.coffee.setQuantity(quantity);
+        all_addins.setOnMouseClicked(new EventHandler<Event>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectAddin(newValue);
+            public void handle(Event event) {
+                ObservableList<String> selectedItems = all_addins.getSelectionModel().getSelectedItems();
+                for (String s:selectedItems){
+                    System.out.println("selected items: " + s);
+                }
+
+                selectAddin(selectedItems);
+                System.out.println("-----");
             }
         });
 
@@ -85,9 +93,9 @@ public class CoffeeViewController {
         primaryStage.setScene(primaryScene);
         primaryStage.show();
     }
-    public void selectAddin(String addin){
+    public void selectAddin(ObservableList<String> addin){
         this.coffee.addAddin(addin);
-        sub_total.setText(String.valueOf(this.coffee.price()));
+        sub_total.setText(String.format("%.2f", this.coffee.price()));
     }
     @FXML
     public void setCupSizeList(){
@@ -122,16 +130,12 @@ public class CoffeeViewController {
         sub_total.setText(String.valueOf(this.coffee.price()));
     }
 
-
     @FXML
     public void addToOrder(){
-        //String order = this.donutTypeEnum.getDonutType() + this.donutFlavorEnum.getDonutType() + String.valueOf(this.quantity);
-        //subTotal.setText(order);
-        //MenuItem donut = new Donut()
-        //order.add
         this.order.add(coffee);
-        //System.out.println(order.getMenuList()[0].price());
+        this.coffee = new Coffee();
     }
+
 
 
 }
