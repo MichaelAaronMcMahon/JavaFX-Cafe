@@ -39,8 +39,15 @@ public class Order {
         this.menuItemId ++;
         menuList[this.addIndex] = menuItem;
         this.addIndex ++;
-        printMenuList();
-        System.out.println("\n");
+        //printMenuList();
+        //System.out.println("\n");
+    }
+    public void add(MenuItem[] menuItems){
+        //System.out.println(menuItems.length);
+        for (MenuItem menuItem:menuItems){
+            add(menuItem);
+            //System.out.println(menuItem);
+        }
     }
 
     public void remove(MenuItem menuItem){

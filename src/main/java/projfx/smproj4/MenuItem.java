@@ -5,5 +5,7 @@ abstract class MenuItem {
     public abstract int getID();
 
     public abstract double price();
+    @Override
+    public abstract String toString();
 
 }

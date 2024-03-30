@@ -59,6 +59,18 @@ public class HelloController {
             primaryStage.setScene(scene);
             CoffeeViewController coffeeViewController = loader.getController();
             coffeeViewController.setMainController(this, view1, primaryStage, primaryScene);
+
+            primaryStage.sceneProperty().addListener((observable, primaryScene1, scene1) -> {
+                //System.out.println("New scene: " + primaryScene1);
+                //System.out.println("Old scene: " + scene1);
+                //coffeeViewController.setOrder(order);
+                //System.out.println(sceneTracker);
+                if (coffeeViewController.getOrder() != null) {
+                    if (coffeeViewController.checkIfCoffeeAdded())
+                        order.add(coffeeViewController.getOrder());
+                }
+            });
+
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -115,7 +127,7 @@ public class HelloController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("current-order-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 400);
+            Scene scene = new Scene(root, 550, 400);
             primaryStage.setScene(scene);
             CurrentOrderViewController currentOrderViewController = loader.getController();
             currentOrderViewController.setMainController(this, view1, primaryStage, primaryScene);

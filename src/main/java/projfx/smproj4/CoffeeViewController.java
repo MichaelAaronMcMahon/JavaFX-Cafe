@@ -41,12 +41,13 @@ public class CoffeeViewController {
     private Stage primaryStage;
     private Coffee coffee;
     private CoffeeCupSize coffeeCupSize;
-    private Order order;
+    private MenuItem[] order;
     private int quantity;
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+    private int currIndex = 0;
+    private boolean opened;
+    //public void setOrder(Order order) {
+    //    this.order = order;
+    //}
 
     public void initialize() {
 
@@ -62,6 +63,9 @@ public class CoffeeViewController {
         this.coffee = new Coffee();
         this.quantity = 1;
         this.coffee.setQuantity(quantity);
+        //setOrder();
+        this.order = new MenuItem[1];
+        this.opened = false;
         all_addins.setOnMouseClicked(new EventHandler<Event>() {
             @Override
             public void handle(Event event) {
@@ -132,9 +136,46 @@ public class CoffeeViewController {
 
     @FXML
     public void addToOrder(){
-        this.order.add(coffee);
+        if (currIndex == this.order.length){
+            grow();
+        }
+        this.order[currIndex] = coffee;
         this.coffee = new Coffee();
+        currIndex++;
     }
+    public MenuItem[] getOrder(){
+        if (this.currIndex == 0){
+            return null;
+        }
+        return this.order;
+    }
+    public boolean checkIfCoffeeAdded(){
+
+        if (opened){
+            this.opened = false;
+            return true;
+        }
+        return opened;
+    }
+    public void setOpened(){
+        this.opened = true;
+    }
+    /**
+     * Creates a new array with a length 1 space longer and copies the original array to it.
+     * It does this when the original array is full.
+     */
+    private void grow(){
+
+        MenuItem [] replacement = new MenuItem[order.length + 1];
+
+        int i = 0;
+        for(MenuItem coffee:order){
+            replacement[i] = coffee;
+            i ++;
+        }
+        order = replacement;
+
+    } //helper method to increase the capacity by 1
 
 
 

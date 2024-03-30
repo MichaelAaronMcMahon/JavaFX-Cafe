@@ -34,7 +34,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="displayMainButton" mnemonicParsing="false" onAction="#displayMain" text="Back to Main Menu" />
+                  <Button fx:id="displayMainButton" mnemonicParsing="false" onAction="#displayMain" text="Back to Main Menu">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Button>
                   <HBox prefHeight="149.0" prefWidth="162.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets top="30.0" />
@@ -55,7 +58,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#addToOrder" text="Place Order" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#addToOrder" onMouseClicked="#setOpened" text="Place Order" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="142.0" />
                      </GridPane.margin></Button>

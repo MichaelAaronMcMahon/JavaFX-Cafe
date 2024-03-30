@@ -90,4 +90,8 @@ public class Sandwich extends MenuItem{
         }
         else return 0;
     }
+    @Override
+    public String toString(){
+        return "Sammich";
+    }
 }
