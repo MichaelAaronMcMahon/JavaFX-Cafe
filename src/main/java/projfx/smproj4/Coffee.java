@@ -62,6 +62,7 @@ public class Coffee extends MenuItem{
         double cupPriceMultiplier = this.cupSize.ordinal() * 0.50;
         double addinMultiplier = this.index * 0.30;
 
-         return (cupPriceMultiplier + addinMultiplier + 1.99) * quantity;
+        double unrounded = (cupPriceMultiplier + addinMultiplier + 1.99) * quantity;
+        return (double)Math.round(unrounded*100)/100;
     }
 }

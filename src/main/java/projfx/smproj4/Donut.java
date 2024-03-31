@@ -19,7 +19,8 @@ public class Donut extends MenuItem{
 
     @Override
     public double price() {
-        return this.quantity * this.donutType.getTypePrice();
+        double unrounded = this.quantity * this.donutType.getTypePrice();
+        return (double)Math.round(unrounded*100)/100;
     }
     @Override
     public String toString(){

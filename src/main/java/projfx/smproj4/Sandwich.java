@@ -1,6 +1,8 @@
 package projfx.smproj4;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.lang.Math;
 
 public class Sandwich extends MenuItem{
 
@@ -30,6 +32,7 @@ public class Sandwich extends MenuItem{
 //        this.quantity = quantity;
 //        this.index = 0;
     }
+
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
@@ -86,7 +89,8 @@ public class Sandwich extends MenuItem{
         }
         if (this.option != null) {
             System.out.println(this.option.ordinal() + " " + addonMultiplier);
-            return (8.99 + this.option.ordinal() + addonMultiplier) * quantity;
+            double unrounded = (8.99 + this.option.ordinal() + addonMultiplier) * quantity;
+            return (double)Math.round(unrounded*100)/100;
         }
         else return 0;
     }
@@ -101,5 +105,16 @@ public class Sandwich extends MenuItem{
         rstring += this.quantity;
         return rstring;
         //return "Sammich";
+    }
+
+    public static void main(String[] args){
+        Sandwich s1 = new Sandwich();
+        s1.setBread("Bagel");
+        s1.setOption("Beef");
+        ObservableList<String> addonList = FXCollections.observableArrayList("Lettuce");
+        s1.addAddon(addonList);
+        s1.setQuantity(1);
+        System.out.println(s1.price());
+        System.out.println((double)Math.round(s1.price()*100)/100);
     }
 }
