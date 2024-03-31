@@ -7,9 +7,12 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import java.io.*;
 
@@ -40,6 +43,8 @@ public class DonutViewController {
         this.order = order;
     }
 
+    @FXML
+    private ImageView donutImage;
     public void initialize() {
         typeList = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Hole");
         yeastList = FXCollections.observableArrayList("Boston Cream", "Jelly-Filled", "Powdered", "Old-Fashioned", "Chocolate", "Blueberry");
@@ -50,6 +55,11 @@ public class DonutViewController {
         cmb_quantity.setItems(quantityList);
         this.donut = new Donut();
         this.quantity = 1;
+        //donutImage = new ImageView();
+        //File yeastFile = new File("src/main/resources/projfx/smproj4/yeast.jpg");
+        //Image yeastImage = new Image(yeastFile.toURI().toString());
+        //donutImage.setImage(new Image("src/main/resources/projfx/smproj4/yeast.jpg"));
+        //donutImage.setImage(new Image("C:\Users\Admin\IdeaProjects\SMProj4\src\main\resources\projfx\smproj4\yeast.jpg");
     }
 
     public void setMainController (HelloController controller,
@@ -68,22 +78,33 @@ public class DonutViewController {
         primaryStage.setScene(primaryScene);
         primaryStage.show();
     }
+
+
     @FXML
     public void setFlavorList(){
         //String donutType = cmb_type.getTypeSelector();
         String donutType = cmb_type.getSelectionModel().getSelectedItem();
+        File yeastFile = new File("src/main/resources/projfx/smproj4/yeast.jpg");
+        File cakeFile = new File("src/main/resources/projfx/smproj4/cake.jpg");
+        File holesFile = new File("src/main/resources/projfx/smproj4/holes.jpg");
+        Image yeastImage = new Image(yeastFile.toURI().toString());
+        Image cakeImage = new Image(cakeFile.toURI().toString());
+        Image holesImage = new Image(holesFile.toURI().toString());
 
         if(donutType.equalsIgnoreCase("Yeast Donut")){
+            donutImage.setImage(yeastImage);
             lv_flavor.setItems(yeastList);
             this.donutTypeEnum = DonutType.valueOf("YEASTDONUT");
             this.donut.setDonutType(DonutType.valueOf("YEASTDONUT"));
         }
         if(donutType.equalsIgnoreCase("Cake Donut")){
+            donutImage.setImage(cakeImage);
             lv_flavor.setItems(cakeList);
             this.donutTypeEnum = DonutType.valueOf("CAKEDONUT");
             this.donut.setDonutType(DonutType.valueOf("CAKEDONUT"));
         }
         if(donutType.equalsIgnoreCase("Donut Hole")){
+            donutImage.setImage(holesImage);
             lv_flavor.setItems(holeList);
             this.donutTypeEnum = DonutType.valueOf("DONUTHOLE");
             this.donut.setDonutType(DonutType.valueOf("DONUTHOLE"));
