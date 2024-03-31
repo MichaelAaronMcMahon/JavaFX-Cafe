@@ -55,9 +55,9 @@ public class CurrentOrderViewController {
         for(int i=0; i<orderLength; i++){
             subTotal += this.order.getMenuList()[i].price();
         }
-        tf_subTotal.setText(String.valueOf(subTotal));
-        tf_salesTax.setText(String.valueOf(subTotal * 0.06625));
-        tf_totalAmount.setText(String.valueOf(subTotal + subTotal * 0.06625));
+        tf_subTotal.setText(String.format("%.2f", subTotal));
+        tf_salesTax.setText(String.format("%.2f", subTotal * 0.06625));
+        tf_totalAmount.setText(String.format("%.2f", subTotal + subTotal * 0.06625));
 
     }
     @FXML Button removeButton;
