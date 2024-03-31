@@ -48,14 +48,13 @@ public class Coffee extends MenuItem{
 
     @Override
     public String toString(){
-        String rstring = this.cupSize.getCupSize() + ", ";
+        String rstring = "Coffee: " + this.cupSize.getCupSize() + ", ";
         for(int i = 0; i < this.index; i++){
             rstring += this.coffeeAddins[i].getCoffeeAddin();
             rstring += ", ";
         }
         rstring += this.quantity;
         return rstring;
-        //return "cofe";
     }
     @Override
     public double price() {

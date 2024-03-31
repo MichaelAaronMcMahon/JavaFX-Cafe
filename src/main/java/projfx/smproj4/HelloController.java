@@ -91,6 +91,13 @@ public class HelloController {
             primaryStage.setScene(scene);
             SandwichViewController sandwichViewController = loader.getController();
             sandwichViewController.setMainController(this, view1, primaryStage, primaryScene);
+
+            primaryStage.sceneProperty().addListener((observable, primaryScene1, scene1) -> {
+                if (sandwichViewController.getOrder() != null) {
+                    if (sandwichViewController.checkIfSandwichAdded())
+                        order.add(sandwichViewController.getOrder());
+                }
+            });
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");

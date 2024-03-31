@@ -123,7 +123,7 @@ public class CoffeeViewController {
             this.coffee.setCupSize(CoffeeCupSize.valueOf("VENTI"));
         }
 
-        sub_total.setText(String.valueOf(this.coffee.price()));
+        sub_total.setText(String.format("%.2f", this.coffee.price()));
     }
     @FXML
     public void chooseQuantity(){
@@ -131,7 +131,7 @@ public class CoffeeViewController {
         int quantity = Integer.parseInt(quantityStr);
         this.coffee.setQuantity(quantity);
         this.quantity = quantity;
-        sub_total.setText(String.valueOf(this.coffee.price()));
+        sub_total.setText(String.format("%.2f", this.coffee.price()));
     }
 
     @FXML

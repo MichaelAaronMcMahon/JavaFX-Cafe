@@ -40,7 +40,9 @@ public class SandwichViewController {
     private ObservableList<String> qtyList;
     private Sandwich sandwich;
     private int quantity;
-    private Order order;
+    private MenuItem [] order;
+    private boolean opened;
+    private int currIndex = 0;
 
 
     public void initialize() {
@@ -59,6 +61,10 @@ public class SandwichViewController {
         this.sandwich = new Sandwich();
         this.quantity = 1;
         this.sandwich.setQuantity(quantity);
+
+        this.order = new MenuItem[1];
+        this.opened = false;
+
         all_addons.setOnMouseClicked(new EventHandler<Event>() {
             @Override
             public void handle(Event event) {
@@ -138,8 +144,46 @@ public class SandwichViewController {
     }
     @FXML
     public void addToOrder(){
-        this.order.add(sandwich);
+
+        if (currIndex == this.order.length){
+            grow();
+        }
+        this.order[currIndex] = sandwich;
         this.sandwich = new Sandwich();
+        currIndex++;
     }
 
+    public MenuItem[] getOrder(){
+        if (this.currIndex == 0){
+            return null;
+        }
+        return this.order;
+    }
+    public boolean checkIfSandwichAdded(){
+
+        if (opened){
+            this.opened = false;
+            return true;
+        }
+        return opened;
+    }
+    public void setOpened(){
+        this.opened = true;
+    }
+    /**
+     * Creates a new array with a length 1 space longer and copies the original array to it.
+     * It does this when the original array is full.
+     */
+    private void grow(){
+
+        MenuItem [] replacement = new MenuItem[order.length + 1];
+
+        int i = 0;
+        for(MenuItem sandwich:order){
+            replacement[i] = sandwich;
+            i ++;
+        }
+        order = replacement;
+
+    } //helper method to increase the capacity by 1
 }

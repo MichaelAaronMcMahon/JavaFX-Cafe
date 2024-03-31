@@ -92,6 +92,14 @@ public class Sandwich extends MenuItem{
     }
     @Override
     public String toString(){
-        return "Sammich";
+        String rstring = "Sandwich: " + this.bread.getBread() + ", " + this.option.getSwOption() + ", ";
+
+        for(int i = 0; i < this.index; i++){
+            rstring += this.addons[i].getSwAddon();
+            rstring += ", ";
+        }
+        rstring += this.quantity;
+        return rstring;
+        //return "Sammich";
     }
 }
