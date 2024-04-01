@@ -31,14 +31,15 @@ public class CurrentOrderViewController {
     private TextField tf_salesTax;
     @FXML
     private TextField tf_totalAmount;
+    private boolean opened;
 
     public void initialize() {
         //System.out.println(order.getMenuList()[0].price());
 
     }
-
-
-
+//    public Order getOrder(){
+//        return order;
+//    }
     public void setOrder(Order order) {
         this.order = order;
         //System.out.println(this.order.getMenuList()[0].price());
@@ -66,7 +67,6 @@ public class CurrentOrderViewController {
         this.order.remove(removeItem);
         setOrder(this.order);
 
-
     }
 
     public void setMainController (HelloController controller,
@@ -88,4 +88,15 @@ public class CurrentOrderViewController {
     }
 
 
+    public boolean checkedIfOrderMade() {
+
+        if (opened){
+            this.opened = false;
+            return true;
+        }
+        return opened;
+    }
+    public void setOpened(){
+        this.opened = true;
+    }
 }

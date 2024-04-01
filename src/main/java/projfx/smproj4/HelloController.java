@@ -17,6 +17,8 @@ public class HelloController {
     private Stage primaryStage;
     private Scene primaryScene;
     private Order order = new Order(1);
+    private Order [] orders = new Order[10];
+    private int orderIndex = 0;
 
     public void setOrder(Order order) {
         this.order = order;
@@ -65,10 +67,6 @@ public class HelloController {
             coffeeViewController.setMainController(this, view1, primaryStage, primaryScene);
 
             primaryStage.sceneProperty().addListener((observable, primaryScene1, scene1) -> {
-                //System.out.println("New scene: " + primaryScene1);
-                //System.out.println("Old scene: " + scene1);
-                //coffeeViewController.setOrder(order);
-                //System.out.println(sceneTracker);
                 if (coffeeViewController.getOrder() != null) {
                     if (coffeeViewController.checkIfCoffeeAdded())
                         order.add(coffeeViewController.getOrder());
@@ -124,6 +122,7 @@ public class HelloController {
             primaryStage.setScene(scene);
             AllOrdersViewController allOrdersViewController = loader.getController();
             allOrdersViewController.setMainController(this, view1, primaryStage, primaryScene);
+
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -146,7 +145,16 @@ public class HelloController {
             CurrentOrderViewController currentOrderViewController = loader.getController();
             currentOrderViewController.setMainController(this, view1, primaryStage, primaryScene);
             currentOrderViewController.setOrder(order);
-            //System.out.println(order.getMenuList()[0].price());
+
+            primaryStage.sceneProperty().addListener((observable, primaryScene1, scene1) -> {
+                if (currentOrderViewController.checkedIfOrderMade()) {
+                    orders[orderIndex] = order;
+                    System.out.println(order);
+                    orderIndex ++;
+                    order = new Order(orderIndex + 1);
+                }
+            });
+
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");

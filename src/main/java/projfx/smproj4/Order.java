@@ -43,11 +43,8 @@ public class Order {
         //System.out.println("\n");
     }
     public void add(MenuItem[] menuItems){
-        //System.out.println(menuItems.length);
-        for (MenuItem menuItem:menuItems){
+        for (MenuItem menuItem:menuItems)
             add(menuItem);
-            //System.out.println(menuItem);
-        }
     }
 
     public void remove(MenuItem menuItem){
