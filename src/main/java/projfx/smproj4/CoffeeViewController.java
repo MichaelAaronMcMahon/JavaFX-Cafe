@@ -95,6 +95,7 @@ public class CoffeeViewController {
     public void displayMain() {
         //stage.close();
         primaryStage.setScene(primaryScene);
+        primaryStage.setTitle("Main Menu");
         primaryStage.show();
     }
     public void selectAddin(ObservableList<String> addin){

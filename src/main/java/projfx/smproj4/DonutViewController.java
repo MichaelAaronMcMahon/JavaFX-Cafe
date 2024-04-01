@@ -46,6 +46,7 @@ public class DonutViewController {
     @FXML
     private ImageView donutImage;
     public void initialize() {
+        //stage.setTitle("Donut");
         typeList = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Hole");
         yeastList = FXCollections.observableArrayList("Boston Cream", "Jelly-Filled", "Powdered", "Old-Fashioned", "Chocolate", "Blueberry");
         cakeList = FXCollections.observableArrayList("Pumpkin", "Strawberry", "Red Velvet");
@@ -76,6 +77,7 @@ public class DonutViewController {
     public void displayMain() {
         //stage.close();
         primaryStage.setScene(primaryScene);
+        primaryStage.setTitle("Main Menu");
         primaryStage.show();
     }
 

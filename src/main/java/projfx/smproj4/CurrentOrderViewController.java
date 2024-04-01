@@ -83,6 +83,7 @@ public class CurrentOrderViewController {
     public void displayMain() {
         //stage.close();
         primaryStage.setScene(primaryScene);
+        primaryStage.setTitle("Main Menu");
         primaryStage.show();
     }
 

@@ -30,6 +30,7 @@ public class HelloController {
     @FXML
     protected void displayDonutView() {
         Stage view1 = new Stage();
+        primaryStage.setTitle("Order Donuts");
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("donut-view.fxml"));
@@ -37,8 +38,10 @@ public class HelloController {
             Scene scene = new Scene(root, 500, 400);
             primaryStage.setScene(scene);
             DonutViewController donutViewController = loader.getController();
+            view1.setTitle("Donut");
             donutViewController.setMainController(this, view1, primaryStage, primaryScene);
             donutViewController.setOrder(order);
+            view1.setTitle("Donut");
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
@@ -51,6 +54,7 @@ public class HelloController {
     @FXML
     protected void displayCoffeeView() {
         Stage view1 = new Stage();
+        primaryStage.setTitle("Order Coffee");
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("coffee-view.fxml"));
@@ -83,6 +87,7 @@ public class HelloController {
     @FXML
     protected void displaySandwichView() {
         Stage view1 = new Stage();
+        primaryStage.setTitle("Order Sandwiches");
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("sandwich-view.fxml"));
@@ -110,6 +115,7 @@ public class HelloController {
     @FXML
     protected void displayAllOrdersView() {
         Stage view1 = new Stage();
+        primaryStage.setTitle("All Orders");
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("all-orders-view.fxml"));
@@ -130,6 +136,7 @@ public class HelloController {
     @FXML
     protected void displayCurrentOrderView() {
         Stage view1 = new Stage();
+        primaryStage.setTitle("Current Order");
         BorderPane root;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("current-order-view.fxml"));
