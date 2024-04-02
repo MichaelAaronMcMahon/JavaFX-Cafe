@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 
 /**
  * The Coffee object creates a coffee and stores the selected coffee combination
+ * Extends MenuItem class
  * @author Steven Rodriguez, Michael McMahon
  */
 public class Coffee extends MenuItem{

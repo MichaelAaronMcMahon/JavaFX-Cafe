@@ -2,6 +2,7 @@ package projfx.smproj4;
 
 /**
  * The Donut object creates a donut and stores the selected donut combination
+ * Extends MenuItem Class
  * @author Michael McMahon, Steven Rodriguez
  */
 public class Donut extends MenuItem{

@@ -7,9 +7,11 @@ import java.lang.System.*;
 
 
 /**
- * An enum class for donut types 'Yeast Donut', 'Cake Donut', 'Donut Hole'.
- * Includes a method to return the donut type as a String.
- * @author Steven Rodriguez
+ * An enum class for donut flavors 'Boston Cream', 'Jelly Filled', 'Powdered',
+ * 'Old Fashioned', 'Chocolate', 'Blueberry', 'Pumpkin', 'Strawberry', 'Red Velvet',
+ * 'Glazed', 'Raspberry', 'Sprinkled'.
+ * Includes a method to return the donut flavor as a String.
+ * @author Michael McMahon
  */
 public enum DonutFlavor {
 
@@ -29,14 +31,14 @@ public enum DonutFlavor {
     private final String donutFlavor;
 
     /**
-     * Constructor which creates a DonutType object from a string
+     * Constructor which creates a DonutFlavor object from a string
      * @param donutFlavor
      */
     DonutFlavor(String donutFlavor) {
         this.donutFlavor = donutFlavor;
     }
     /**
-     * Return donut type as a String
+     * Return donut flavor as a String
      * @return String
      */
     public String getDonutFlavor(){

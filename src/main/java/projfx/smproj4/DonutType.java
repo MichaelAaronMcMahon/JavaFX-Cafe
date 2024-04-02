@@ -1,12 +1,9 @@
 package projfx.smproj4;
-//import java.lang.System.*;
-
-import javafx.scene.control.Menu;
 
 /**
  * An enum class for donut types 'Yeast Donut', 'Cake Donut', 'Donut Hole'.
  * Includes a method to return the donut type as a String.
- * @author Steven Rodriguez
+ * @author Steven Rodriguez, Michael McMahon
  */
 public enum DonutType {
 
@@ -35,19 +32,21 @@ public enum DonutType {
     public String getDonutType(){
         return donutType;
     }
+    /**
+     * Return donut type price as a double
+     * @return double
+     */
     public double getTypePrice(){
         return typePrice;
     }
 
     public static void main (String[] args){
-        /*DonutType dt = DonutType.valueOf("YEASTDONUT");
-        System.out.println(dt.getDonutType());
-        System.out.println(dt.getTypePrice());*/
+
         Donut donut = new Donut();
         donut.setDonutType(DonutType.valueOf("CAKEDONUT"));
         MenuItem menuItems[] = new MenuItem[3];
         menuItems[0] = donut;
-        //menuItems[0].price();
+
         System.out.println(menuItems[0].price());
     }
 }
