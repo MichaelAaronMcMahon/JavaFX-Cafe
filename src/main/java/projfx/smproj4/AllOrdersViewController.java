@@ -12,7 +12,12 @@ import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class AllOrdersViewController {
@@ -52,8 +57,28 @@ public class AllOrdersViewController {
         lv_orderNumbers.setItems(orderList);
 
     }
-    public void exportOrder(){
-        fileChooser.
+    public void exportOrder() throws IOException {
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Orders");
+        String str = "Hello";
+        File expFile = new File("src/orders.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(expFile));
+        writer.write("Order number, Menu items\n");
+        for(int i=0; i< orderIndex.getOrderNumber(); i++){
+            writer.write("Order "+ orders[i].toString() + ":" + "\n");
+            for(int j=0; j<orders[i].getAddIndex(); j++){
+                writer.write(orders[i].getMenuList()[j].toString() + "\n");
+            }
+        }
+        //writer.write(str);
+        writer.close();
+        //File src = new File("src/main");
+        Stage nstage = new Stage();
+        Scene nscene = new Scene(new Label("orders.txt saved to src"));
+        nstage.setScene(nscene);
+        nstage.show();
+        //stage.show();
+        //fileChooser.setInitialDirectory();
     }
     @FXML
     public void cancelOrder(){

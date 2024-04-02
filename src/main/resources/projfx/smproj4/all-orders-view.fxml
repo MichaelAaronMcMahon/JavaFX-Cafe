@@ -83,7 +83,7 @@
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="Export Orders">
+                        <Button mnemonicParsing="false" onAction="#exportOrder" prefHeight="29.0" prefWidth="107.0" text="Export Orders">
                            <font>
                               <Font size="15.0" />
                            </font>
