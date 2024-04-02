@@ -24,7 +24,7 @@ public class Donut extends MenuItem{
     }
     @Override
     public String toString(){
-        String rstring = "Donut Type: " + this.donutType.getDonutType() + ", Donut Flavor: " + this.donutFlavor.getDonutFlavor() + ", Quantity: " + String.valueOf(this.quantity)+ ", Id #" + String.valueOf(this.ID);
+        String rstring = "Donut Type: " + this.donutType.getDonutType() + " | Donut Flavor: " + this.donutFlavor.getDonutFlavor() + " | Quantity: " + String.valueOf(this.quantity)+ " | Id #" + String.valueOf(this.ID);
         return rstring;
     }
 

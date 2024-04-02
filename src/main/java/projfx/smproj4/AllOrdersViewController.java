@@ -70,11 +70,19 @@ public class AllOrdersViewController {
         File expFile = new File("src/orders.txt");
         BufferedWriter writer = new BufferedWriter(new FileWriter(expFile));
         writer.write("Order number, Menu items\n");
-        for(int i=0; i< orderIndex.getOrderNumber(); i++){
+
+        for(int i = 0; i < orderIndex.getOrderNumber(); i++){
+            double subtotal = 0;
             writer.write("Order "+ orders[i].toString() + ":" + "\n");
-            for(int j=0; j<orders[i].getAddIndex(); j++){
+            for(int j = 0; j < orders[i].getAddIndex(); j++){
                 writer.write(orders[i].getMenuList()[j].toString() + "\n");
+                subtotal += orders[i].getMenuList()[j].price();
             }
+            writer.write("Sub-Total: " + String.format("%.2f", subtotal) + "\n");
+            writer.write("Sales Tax: " + String.format("%.2f", (subtotal * 0.06625)) + "\n");
+            writer.write("Total: " + String.format("%.2f", (subtotal + (subtotal * 0.06625))) + "\n");
+            writer.write("______________________________________________\n");
+
         }
         //writer.write(str);
         writer.close();
