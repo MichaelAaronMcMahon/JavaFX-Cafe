@@ -47,14 +47,20 @@ public class AllOrdersViewController {
     }
     public void setOrders(Order[] orders){
         this.orders = orders;
-        orderList = FXCollections.observableArrayList(this.orders);
+        orderList = FXCollections.observableArrayList();
+        for (Order order:orders){
+            if(order != null)
+                orderList.add(order);
+            else
+                break;
+        }
         //lv_orderNumbers = new ListView<Order>();
         lv_orderNumbers.setItems(orderList);
 
     }
-    public void exportOrder(){
-        fileChooser.
-    }
+//    public void exportOrder(){
+//        fileChooser.
+//    }
     @FXML
     public void cancelOrder(){
         Order order = lv_orderNumbers.getSelectionModel().getSelectedItem();
@@ -76,15 +82,19 @@ public class AllOrdersViewController {
     @FXML
     public void displayOrder(){
         Order order = lv_orderNumbers.getSelectionModel().getSelectedItem();
-        menuList = FXCollections.observableArrayList(order.getMenuList());
-        lv_menuItems.setItems(menuList);
-        int orderLength = order.getAddIndex();
-        double subTotal = 0.0;
-        for(int i=0; i<orderLength; i++){
-            subTotal += order.getMenuList()[i].price();
+        if (order != null) {
+            menuList = FXCollections.observableArrayList(order.getMenuList());
+            lv_menuItems.setItems(menuList);
+            int orderLength = order.getAddIndex();
+            double subTotal = 0.0;
+            for(int i = 0; i < orderLength; i++){
+                subTotal += order.getMenuList()[i].price();
+            }
+
+            totalPrice.setText(String.format("%.2f", subTotal + subTotal * 0.06625));
         }
 
-        totalPrice.setText(String.format("%.2f", subTotal + subTotal * 0.06625));
+
     }
 
     public void setMainController (HelloController controller,

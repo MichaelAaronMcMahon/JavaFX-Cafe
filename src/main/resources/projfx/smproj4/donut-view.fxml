@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projfx.smproj4.DonutViewController">
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projfx.smproj4.DonutViewController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -30,28 +31,43 @@
                   <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ListView fx:id="lv_flavor" onMouseClicked="#chooseFlavor" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ListView fx:id="lv_flavor" onMouseClicked="#chooseFlavor" prefHeight="158.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="50.0" />
+                     </GridPane.margin></ListView>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <ComboBox fx:id="cmb_type" onAction="#setFlavorList" prefWidth="150.0" promptText="Select Donut Type" />
+                        <ComboBox fx:id="cmb_type" onAction="#setFlavorList" prefWidth="150.0" promptText="Select Donut Type">
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin></ComboBox>
                         <ImageView fx:id="donutImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                      <children>
                         <Label text="Sub total" />
-                        <TextField fx:id="subTotal" />
+                        <TextField fx:id="subTotal" prefHeight="26.0" prefWidth="297.0" />
                      </children>
                   </VBox>
                   <Button fx:id="displayMainButton" mnemonicParsing="false" onAction="#displayMain" prefHeight="53.0" prefWidth="150.0" text="Back to main menu" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <ComboBox fx:id="cmb_quantity" onAction="#chooseQuantity" prefWidth="150.0" promptText="Quantity" />
+                        <ComboBox fx:id="cmb_quantity" onAction="#chooseQuantity" prefWidth="150.0" promptText="Quantity">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin></ComboBox>
                      </children></HBox>
-                  <Button mnemonicParsing="false" onAction="#addToOrder" text="Add to order" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#addToOrder" text="Add to order" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="40.0" left="10.0" />
+                     </GridPane.margin></Button>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                      <children>
-                        <Label text="Quantity" />
+                        <Label prefHeight="17.0" prefWidth="53.0" text="Quantity">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin></Label>
                      </children>
                   </VBox>
                </children>
