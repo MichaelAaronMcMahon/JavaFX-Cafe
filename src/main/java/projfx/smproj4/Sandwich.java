@@ -3,7 +3,11 @@ package projfx.smproj4;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.lang.Math;
-
+/**
+ * The Sandwich object creates a sandwich and stores the selected sandwich combination
+ * Extends MenuItem Class
+ * @author Michael McMahon, Steven Rodriguez
+ */
 public class Sandwich extends MenuItem{
 
     private SandwichOption option;
@@ -14,50 +18,52 @@ public class Sandwich extends MenuItem{
     private int ID;
     private boolean containsCheese;
 
+    /**
+     * Getter method that returns the Id of the sandwich item
+     * @return int
+     */
     @Override
     public int getID() {
         return ID;
     }
-
+    /**
+     * Setter method that sets the Id of the sandwich item
+     * @param ID
+     */
     @Override
     public void setID(int ID) {
         this.ID = ID;
     }
-
-    public Sandwich(){
-        super();
-//        this.option = option;
-//        this.bread = bread;
-//        this.addons = new SandwichAddon[4];
-//        this.quantity = quantity;
-//        this.index = 0;
-    }
-
+    /**
+     * Setter method that sets the quantity of the sandwich item
+     * @param quantity
+     */
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
+    /**
+     * Setter method that sets the bread option of the sandwich item
+     * @param bread
+     */
     public void setBread(String bread){
         bread = bread.replaceAll("\\s+", "");
         this.bread = SandwichBread.valueOf(bread.toUpperCase());
     }
+
+    /**
+     * Setter method that sets the protein option of the sandwich item
+     * @param option
+     */
     public void setOption(String option){
         option = option.replaceAll("\\s+", "");
         this.option = SandwichOption.valueOf(option.toUpperCase());
     }
+    /**
+     * Method that adds addons to the sandwich item
+     * @param addon
+     * @return
+     */
     public boolean addAddon(ObservableList<String> addon){
-
-//        if (index == 4){//I will delete the print statement later, just have it for testing
-//            System.out.println("addon list is full");
-//            return false;
-//        }
-//        for (SandwichAddon sandwichAddon:addons){
-//            if (sandwichAddon == addon){
-//                return false;
-//            }
-//        }
-//        addons[index] = addon;
-//        index++;
-//        return true;
 
         this.containsCheese = false;
         this.index = 0;
@@ -67,14 +73,16 @@ public class Sandwich extends MenuItem{
             if (add.equalsIgnoreCase("Cheese")){
                 containsCheese = true;
             }
-            //add = add.replaceAll("\\s+", "");
             this.addons[index] = SandwichAddon.valueOf(add.toUpperCase());
             index++;
         }
 
         return true;
     }
-
+    /**
+     * Method that calculates and returns the price for the sandwich item
+     * @return double
+     */
     @Override
     public double price() {
 
@@ -90,10 +98,15 @@ public class Sandwich extends MenuItem{
         if (this.option != null) {
             System.out.println(this.option.ordinal() + " " + addonMultiplier);
             double unrounded = (8.99 + this.option.ordinal() + addonMultiplier) * quantity;
-            return (double)Math.round(unrounded*100)/100;
+            return (double) Math.round(unrounded * 100)/100;
         }
         else return 0;
     }
+
+    /**
+     * Overrides toString method to return the selected sandwich combination in a nice format
+     * @return String
+     */
     @Override
     public String toString(){
         String rstring = "Sandwich Bread Type: " + this.bread.getBread() + " | Sandwich Protein Option: " + this.option.getSwOption() + " | Sandwich Addons: ";
@@ -115,6 +128,6 @@ public class Sandwich extends MenuItem{
         s1.addAddon(addonList);
         s1.setQuantity(1);
         System.out.println(s1.price());
-        System.out.println((double)Math.round(s1.price()*100)/100);
+        System.out.println((double) Math.round(s1.price() * 100)/100);
     }
 }

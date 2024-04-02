@@ -1,5 +1,9 @@
 package projfx.smproj4;
 
+/**
+ * The Order Class creates an order object and stores the information of the current order
+ * @author Steven Rodriguez, Michael McMahon
+ */
 public class Order {
 
     private int orderNumber;
@@ -9,32 +13,40 @@ public class Order {
     //st each menu item has a unique ID
     private int menuItemId = 0;
 
+    /**
+     * Constructor which creates an Order object
+     * @param orderNumber
+     */
     public Order(int orderNumber){
         this.orderNumber = orderNumber;
         this.menuList = new MenuItem[1];
     }
-
+    /**
+     * Getter method that returns the current index
+     * @return int
+     */
     public int getAddIndex() {
         return addIndex;
     }
-
+    /**
+     * Getter method that returns the order number
+     * @return int
+     */
     public int getOrderNumber() {
         return orderNumber;
     }
-
+    /**
+     * Getter method that returns the list of menu items
+     * @return MenuItem[]
+     */
     public MenuItem[] getMenuList() {
         return menuList;
     }
-
+    /**
+     * Method that adds menu item to the array
+     * @param menuItem
+     */
     public void add(MenuItem menuItem){
-        /*if(this.addIndex == this.menuList.length){
-            System.out.println("menulist grow");
-            MenuItem menuGrow[] = new MenuItem[addIndex + 10];
-            for (int i=0; i< menuList.length; i++){
-                menuGrow[i] = this.menuList[i];
-            }
-            this.menuList = menuGrow;
-        }*/
         if (this.addIndex == this.menuList.length){
             grow();
         }
@@ -42,15 +54,19 @@ public class Order {
         this.menuItemId ++;
         menuList[this.addIndex] = menuItem;
         this.addIndex ++;
-        //printMenuList();
-        //System.out.println("\n");
-
     }
+    /**
+     * Method that adds multiple menu items to the array
+     * @param menuItems
+     */
     public void add(MenuItem[] menuItems){
         for (MenuItem menuItem:menuItems)
             add(menuItem);
     }
-
+    /**
+     * Method that removes a menu item from the array
+     * @param menuItem
+     */
     public void remove(MenuItem menuItem){
 
         int removeID = menuItem.getID();
@@ -64,11 +80,8 @@ public class Order {
                     this.menuList[j - 1] = this.menuList[j];
                     this.menuList[j] = null;
                 }
-
                 this.addIndex --;
-
             }
-
         }
     }
     /**
@@ -87,17 +100,18 @@ public class Order {
         this.menuList = replacement;
 
     } //helper method to increase the capacity by 1
-    public void printMenuList(){
-        for (int i=0; i<this.addIndex; i++){
-            System.out.println(this.menuList[i].toString());
-        }
-        System.out.println("end of order");
-    }
+    /**
+     * Overrides toString method to return order number as a string
+     * @return String
+     */
     @Override
     public String toString(){
         return String.valueOf(this.orderNumber);
     }
-
+    /**
+     * Setter method that sets the order number of the order object
+     * @param orderNumber
+     */
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
     }

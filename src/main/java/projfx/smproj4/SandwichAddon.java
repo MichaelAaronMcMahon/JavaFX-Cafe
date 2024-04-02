@@ -1,5 +1,9 @@
 package projfx.smproj4;
 
+/**
+ * An enum class for Sandwich addons Cheese, Lettuce, Tomato, and Onion
+ * Includes a method to return the sandwich addon as a String.
+ */
 public enum SandwichAddon {
 
     CHEESE("Cheese"),

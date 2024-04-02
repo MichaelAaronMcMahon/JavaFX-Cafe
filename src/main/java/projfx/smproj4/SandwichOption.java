@@ -1,5 +1,9 @@
 package projfx.smproj4;
 
+/**
+ * An enum class for Sandwich protein options Chicken, Fish, and Beef
+ * Includes a method to return the Sandwich option as a String.
+ */
 public enum SandwichOption {
 
     CHICKEN("Chicken"),

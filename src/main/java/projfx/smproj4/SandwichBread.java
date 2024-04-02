@@ -1,5 +1,9 @@
 package projfx.smproj4;
 
+/**
+ * An enum class for Sandwich breads bagel, wheat bread, and sour dough
+ * Includes a method to return the Sandwich bread as a String.
+ */
 public enum SandwichBread {
 
     BAGEL("Bagel"),
