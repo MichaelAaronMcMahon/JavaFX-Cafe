@@ -124,13 +124,13 @@ public class HelloController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("all-orders-view.fxml"));
             root = (BorderPane) loader.load();
-            Scene scene = new Scene(root, 500, 400);
+            Scene scene = new Scene(root, 600, 400);
             primaryStage.setScene(scene);
             AllOrdersViewController allOrdersViewController = loader.getController();
-            printOrders();
+            //printOrders();
+            allOrdersViewController.setMainController(this, view1, primaryStage, primaryScene);
             allOrdersViewController.setOrders(orders);
             allOrdersViewController.setOrderIndex(this.orderIndex);
-            allOrdersViewController.setMainController(this, view1, primaryStage, primaryScene);
 
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
