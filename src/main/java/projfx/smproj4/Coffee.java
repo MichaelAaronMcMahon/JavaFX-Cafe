@@ -53,7 +53,6 @@ public class Coffee extends MenuItem{
             rstring += this.coffeeAddins[i].getCoffeeAddin();
             rstring += ", ";
         }
-
         rstring += "Quantity: " + this.quantity + ", Id #" + this.getID();
         return rstring;
     }
