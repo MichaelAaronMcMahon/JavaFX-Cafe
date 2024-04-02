@@ -12,16 +12,22 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.lang.System.*;
 
 public class HelloController {
     private Stage primaryStage;
     private Scene primaryScene;
     private Order order = new Order(1);
     private Order [] orders = new Order[10];
-    private int orderIndex = 0;
+    //private int orderIndex = 0;
+    private Order orderIndex = new Order(0);
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public void printOrders(){
+        System.out.println(this.orders[0].getOrderNumber());
     }
 
     public void setPrimaryStage(Stage stage, Scene scene) {
@@ -121,6 +127,9 @@ public class HelloController {
             Scene scene = new Scene(root, 500, 400);
             primaryStage.setScene(scene);
             AllOrdersViewController allOrdersViewController = loader.getController();
+            printOrders();
+            allOrdersViewController.setOrders(orders);
+            allOrdersViewController.setOrderIndex(this.orderIndex);
             allOrdersViewController.setMainController(this, view1, primaryStage, primaryScene);
 
         } catch (IOException e) {
@@ -145,13 +154,23 @@ public class HelloController {
             CurrentOrderViewController currentOrderViewController = loader.getController();
             currentOrderViewController.setMainController(this, view1, primaryStage, primaryScene);
             currentOrderViewController.setOrder(order);
-
+            //currentOrderViewController.setOrders(orders);
             primaryStage.sceneProperty().addListener((observable, primaryScene1, scene1) -> {
                 if (currentOrderViewController.checkedIfOrderMade()) {
-                    orders[orderIndex] = order;
+                    if(orderIndex.getOrderNumber() == this.orders.length){
+                        Order [] ordersRep = new Order[this.orders.length + 3];
+                        int i = 0;
+                        for(Order order:orders){
+                            ordersRep[i] = order;
+                            i ++;
+                        }
+                        this.orders = ordersRep;
+                    }
+                    orders[orderIndex.getOrderNumber()] = order;
                     System.out.println(order);
-                    orderIndex ++;
-                    order = new Order(orderIndex + 1);
+                    int OI = orderIndex.getOrderNumber();
+                    orderIndex.setOrderNumber(OI + 1);
+                    order = new Order(orderIndex.getOrderNumber() + 1);
                 }
             });
 

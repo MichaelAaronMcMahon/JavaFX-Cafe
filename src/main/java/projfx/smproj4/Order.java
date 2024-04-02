@@ -93,5 +93,13 @@ public class Order {
         }
         System.out.println("end of order");
     }
+    @Override
+    public String toString(){
+        return String.valueOf(this.orderNumber);
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 
 }

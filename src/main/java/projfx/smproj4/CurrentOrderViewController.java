@@ -32,6 +32,7 @@ public class CurrentOrderViewController {
     @FXML
     private TextField tf_totalAmount;
     private boolean opened;
+    private Order[] orders;
 
     public void initialize() {
         //System.out.println(order.getMenuList()[0].price());
@@ -47,6 +48,10 @@ public class CurrentOrderViewController {
         lv_menuItems.setItems(menuList);
         //double subTotal = computeSubTotal();
         setSubTotal();
+    }
+
+    public void setOrders(Order[] orders){
+        this.orders = orders;
     }
 
     private void setSubTotal(){
@@ -99,4 +104,5 @@ public class CurrentOrderViewController {
     public void setOpened(){
         this.opened = true;
     }
+
 }
