@@ -1,5 +1,9 @@
 package projfx.smproj4;
-
+/**
+ * An enum class for coffee addins Sweet Cream, French Vanilla, Irish Cream, Caramel, and Mocha
+ * Includes a method to return the Coffee addin as a String.
+ * @author Steven Rodriguez
+ */
 public enum CoffeeAddin {
 
     SWEETCREAM("Sweet Cream"),

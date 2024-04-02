@@ -1,5 +1,9 @@
 package projfx.smproj4;
-
+/**
+ * An enum class for coffee cup Sizes Short, Tall, Grande, Venti
+ * Includes a method to return the Coffee size as a String.
+ * @author Steven Rodriguez
+ */
 public enum CoffeeCupSize {
 
     SHORT("Short"),
