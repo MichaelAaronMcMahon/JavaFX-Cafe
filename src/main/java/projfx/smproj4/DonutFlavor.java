@@ -1,9 +1,7 @@
 package projfx.smproj4;
 
 import javafx.collections.FXCollections;
-import java.util.*;
-import java.io.*;
-import java.lang.System.*;
+
 
 
 /**
@@ -44,9 +42,6 @@ public enum DonutFlavor {
     public String getDonutFlavor(){
         return donutFlavor;
     }
-    public static void main(String[] args){
-        DonutFlavor df = DonutFlavor.valueOf("BOSTONCREAM");
-        System.out.println(df.donutFlavor);
-    }
+
 
 }

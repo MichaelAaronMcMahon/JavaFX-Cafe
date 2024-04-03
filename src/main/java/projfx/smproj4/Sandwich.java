@@ -96,7 +96,6 @@ public class Sandwich extends MenuItem{
             addonMultiplier += index * 0.3;
         }
         if (this.option != null) {
-            System.out.println(this.option.ordinal() + " " + addonMultiplier);
             double unrounded = (8.99 + this.option.ordinal() + addonMultiplier) * quantity;
             return (double) Math.round(unrounded * 100)/100;
         }
@@ -120,14 +119,4 @@ public class Sandwich extends MenuItem{
         return rstring;
     }
 
-    public static void main(String[] args){
-        Sandwich s1 = new Sandwich();
-        s1.setBread("Bagel");
-        s1.setOption("Beef");
-        ObservableList<String> addonList = FXCollections.observableArrayList("Lettuce");
-        s1.addAddon(addonList);
-        s1.setQuantity(1);
-        System.out.println(s1.price());
-        System.out.println((double) Math.round(s1.price() * 100)/100);
-    }
 }

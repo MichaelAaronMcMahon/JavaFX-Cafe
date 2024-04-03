@@ -49,6 +49,10 @@ public class CoffeeViewController {
     //    this.order = order;
     //}
 
+    /**
+     * Initializes the various observable arraylists and sets the list views with them.
+     * Also creates the coffee object, which the user will set the specifications of through the UI.
+     */
     public void initialize() {
 
         cupSizeList = FXCollections.observableArrayList("Short", "Tall", "Grande", "Venti");
@@ -70,17 +74,23 @@ public class CoffeeViewController {
             @Override
             public void handle(Event event) {
                 ObservableList<String> selectedItems = all_addins.getSelectionModel().getSelectedItems();
-                for (String s:selectedItems){
-                    System.out.println("selected items: " + s);
-                }
+                //for (String s:selectedItems){
+                //    System.out.println("selected items: " + s);
+               // }
 
                 selectAddin(selectedItems);
-                System.out.println("-----");
             }
         });
 
     }
 
+    /**
+     * Sets CoffeeViewController as the main controller.
+     * @param controller
+     * @param stage
+     * @param primaryStage
+     * @param primaryScene
+     */
     public void setMainController (HelloController controller,
                                    Stage stage,
                                    Stage primaryStage,
@@ -91,6 +101,9 @@ public class CoffeeViewController {
         this.primaryScene = primaryScene;
     }
 
+    /**
+     * Allows the user to return to the main menu.
+     */
     @FXML
     public void displayMain() {
         //stage.close();
@@ -98,10 +111,21 @@ public class CoffeeViewController {
         primaryStage.setTitle("Main Menu");
         primaryStage.show();
     }
+
+    /**
+     * Uses the addAddin command of the coffee class to add the addins specified by the user to it.
+     * Also sets the subtotal textbox with the updated price given by the coffee class's .price() command.
+     * @param addin
+     */
     public void selectAddin(ObservableList<String> addin){
         this.coffee.addAddin(addin);
         sub_total.setText(String.format("%.2f", this.coffee.price()));
     }
+
+    /**
+     * Sets the size of the coffee object with the size chosen by the user in the cup size combo box.
+     * Also updates the subtotal textfield with the coffee object's new price.
+     */
     @FXML
     public void setCupSizeList(){
 
@@ -126,6 +150,11 @@ public class CoffeeViewController {
 
         sub_total.setText(String.format("%.2f", this.coffee.price()));
     }
+
+    /**
+     * Sets the quantity of the coffee object with the quantity chosen by the user from the quantity
+     * combo box and updates the subtotal textfield with the new price.
+     */
     @FXML
     public void chooseQuantity(){
         String quantityStr = cmb_Qty.getSelectionModel().getSelectedItem();
@@ -135,6 +164,9 @@ public class CoffeeViewController {
         sub_total.setText(String.format("%.2f", this.coffee.price()));
     }
 
+    /**
+     * Adds the coffee object with the specifications selected by the user to the MenuItems array.
+     */
     @FXML
     public void addToOrder(){
         if (currIndex == this.order.length){
@@ -144,12 +176,23 @@ public class CoffeeViewController {
         this.coffee = new Coffee();
         currIndex++;
     }
+
+    /**
+     * Returns the array of MenuItems stored in this controller
+     * @return
+     */
     public MenuItem[] getOrder(){
         if (this.currIndex == 0){
             return null;
         }
         return this.order;
     }
+
+    /**
+     * Used by HelloController to check if a specific coffee object has been added to the MenuItems
+     * array.
+     * @return
+     */
     public boolean checkIfCoffeeAdded(){
 
         if (opened){
@@ -158,6 +201,10 @@ public class CoffeeViewController {
         }
         return opened;
     }
+
+    /**
+     * Sets the opened instance variable as true.
+     */
     public void setOpened(){
         this.opened = true;
     }

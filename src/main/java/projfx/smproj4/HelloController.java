@@ -12,7 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.lang.System.*;
 
 public class HelloController {
     private Stage primaryStage;
@@ -22,19 +21,29 @@ public class HelloController {
     //private int orderIndex = 0;
     private Order orderIndex = new Order(0);
 
+    /**
+     * Sets the order variable of HelloController. Used to allow the order to be added to from the multiple
+     * order views.
+     * @param order
+     */
     public void setOrder(Order order) {
         this.order = order;
     }
 
-    public void printOrders(){
-        System.out.println(this.orders[0].getOrderNumber());
-    }
-
+    /**
+     * Sets HelloController as the primary stage through HelloApplication.
+     * Allows the main menu to be the first page the user sees when starting the application.
+     * @param stage
+     * @param scene
+     */
     public void setPrimaryStage(Stage stage, Scene scene) {
         primaryStage = stage;
         primaryScene = scene;
     }
 
+    /**
+     * Sets the DonutViewController as the main controller, taking the user to the order donuts page.
+     */
     @FXML
     protected void displayDonutView() {
         Stage view1 = new Stage();
@@ -59,6 +68,9 @@ public class HelloController {
         }
     }
 
+    /**
+     * Sets the CoffeeViewController as the main controller, taking the user to the order coffee page.
+     */
     @FXML
     protected void displayCoffeeView() {
         Stage view1 = new Stage();
@@ -88,6 +100,9 @@ public class HelloController {
         }
     }
 
+    /**
+     * Sets the SandwichViewController as the main controller, taking the user to the order sandwiches page.
+     */
     @FXML
     protected void displaySandwichView() {
         Stage view1 = new Stage();
@@ -116,6 +131,9 @@ public class HelloController {
         }
     }
 
+    /**
+     * Sets the AllOrdersViewController as the main controller, taking the user to the all orders page.
+     */
     @FXML
     protected void displayAllOrdersView() {
         Stage view1 = new Stage();
@@ -127,7 +145,6 @@ public class HelloController {
             Scene scene = new Scene(root, 600, 400);
             primaryStage.setScene(scene);
             AllOrdersViewController allOrdersViewController = loader.getController();
-            //printOrders();
             allOrdersViewController.setMainController(this, view1, primaryStage, primaryScene);
             allOrdersViewController.setOrders(orders);
             allOrdersViewController.setOrderIndex(this.orderIndex);
@@ -141,6 +158,9 @@ public class HelloController {
         }
     }
 
+    /**
+     * Sets the CurrentOrderViewController as the main controller, taking the user to the current order page.
+     */
     @FXML
     protected void displayCurrentOrderView() {
         Stage view1 = new Stage();
@@ -167,7 +187,6 @@ public class HelloController {
                         this.orders = ordersRep;
                     }
                     orders[orderIndex.getOrderNumber()] = order;
-                    System.out.println(order);
                     int OI = orderIndex.getOrderNumber();
                     orderIndex.setOrderNumber(OI + 1);
                     order = new Order(orderIndex.getOrderNumber() + 1);

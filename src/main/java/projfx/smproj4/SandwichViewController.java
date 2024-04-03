@@ -44,7 +44,11 @@ public class SandwichViewController {
     private boolean opened;
     private int currIndex = 0;
 
-
+    /**
+     * Sets the observable arraylists for the types of bread, protein and addons for the sandwich.
+     * Also sets their respective comboboxes and list views. Also creates a sandwich object and the
+     * MenuItem array order.
+     */
     public void initialize() {
 
         breadOptionList = FXCollections.observableArrayList("Bagel", "Wheat Bread", "Sour Dough");
@@ -69,17 +73,23 @@ public class SandwichViewController {
             @Override
             public void handle(Event event) {
                 ObservableList<String> selectedItems = all_addons.getSelectionModel().getSelectedItems();
-                for (String s:selectedItems){
-                    System.out.println("selected items: " + s);
-                }
+                //for (String s:selectedItems){
+                //}
 
                 selectAddon(selectedItems);
-                System.out.println("-----");
             }
         });
 
     }
 
+    /**
+     * Sets SandwichViewController as the main controller, allowing the user to interact with
+     * the objects in the view.
+     * @param controller
+     * @param stage
+     * @param primaryStage
+     * @param primaryScene
+     */
     public void setMainController (HelloController controller,
                                    Stage stage,
                                    Stage primaryStage,
@@ -90,6 +100,9 @@ public class SandwichViewController {
         this.primaryScene = primaryScene;
     }
 
+    /**
+     * Takes the user back to the main menu
+     */
     @FXML
     public void displayMain() {
         //stage.close();
@@ -97,10 +110,21 @@ public class SandwichViewController {
         primaryStage.setTitle("Main Menu");
         primaryStage.show();
     }
+
+    /**
+     * Sets the sandwiches addon array with the addons selected by the user in the
+     * multiple select addons list view. Also sets the subtotal textfield with the updated price.
+     * @param addon
+     */
     public void selectAddon(ObservableList<String> addon){
         this.sandwich.addAddon(addon);
         subTotal.setText(String.format("%.2f", this.sandwich.price()));
     }
+
+    /**
+     * Sets the sandwich's bread enum with the user's selection and updates the subtotal textfield with
+     * the new price.
+     */
     @FXML
     public void setBreadOptionList(){
 
@@ -118,6 +142,11 @@ public class SandwichViewController {
 
         subTotal.setText(String.format("%.2f", this.sandwich.price()));
     }
+
+    /**
+     * Sets the sandwich's protein enum with the user's selection and updates the subtotal textfield with
+     * the new price.
+     */
     @FXML
     public void setProteinOptionList(){
 
@@ -135,6 +164,11 @@ public class SandwichViewController {
 
         subTotal.setText(String.format("%.2f", this.sandwich.price()));
     }
+
+    /**
+     * Sets the sandwich's quantity with the user's selection and updates the subtotal textfield with
+     * the new price.
+     */
     @FXML
     public void chooseQuantity(){
         String quantityStr = cmb_quantity.getSelectionModel().getSelectedItem();
@@ -143,6 +177,10 @@ public class SandwichViewController {
         this.quantity = quantity;
         subTotal.setText(String.format("%.2f", this.sandwich.price()));
     }
+
+    /**
+     * Adds the sandwich to the MenuItem array, allowing it to be added to the current order being made.
+     */
     @FXML
     public void addToOrder(){
 
@@ -154,12 +192,21 @@ public class SandwichViewController {
         currIndex++;
     }
 
+    /**
+     * Returns the controller's MenuItem array order.
+     * @return
+     */
     public MenuItem[] getOrder(){
         if (this.currIndex == 0){
             return null;
         }
         return this.order;
     }
+
+    /**
+     * Checks if the sandwich object has been added to the MenuItem array orders, returning true if so.
+     * @return
+     */
     public boolean checkIfSandwichAdded(){
 
         if (opened){
@@ -168,6 +215,10 @@ public class SandwichViewController {
         }
         return opened;
     }
+
+    /**
+     * Sets the opened boolean to true.
+     */
     public void setOpened(){
         this.opened = true;
     }

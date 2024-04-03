@@ -40,15 +40,7 @@ public enum DonutType {
         return typePrice;
     }
 
-    public static void main (String[] args){
 
-        Donut donut = new Donut();
-        donut.setDonutType(DonutType.valueOf("CAKEDONUT"));
-        MenuItem menuItems[] = new MenuItem[3];
-        menuItems[0] = donut;
-
-        System.out.println(menuItems[0].price());
-    }
 }
 
 

@@ -36,9 +36,12 @@ public class AllOrdersViewController {
     private Order orderIndex;
     @FXML
     private TextField totalPrice;
-    @FXML
-    private FileChooser fileChooser;
 
+    /**
+     * Sets the order object orderIndex which is use to keep track of the index in which orders
+     * should be inserted into the orders array
+     * @param orderIndex
+     */
     public void setOrderIndex(Order orderIndex) {
         this.orderIndex = orderIndex;
     }
@@ -47,9 +50,18 @@ public class AllOrdersViewController {
     }*/
     //@FXML ListView
 
+    /**
+     * Runs when controller is initialized
+     */
     public void initialize() {
 
     }
+
+    /**
+     * Sets the orders array with the orders which have been previously placed by the user,
+     * then sets the order number list view which the user can use to select and view an order.
+     * @param orders
+     */
     public void setOrders(Order[] orders){
         this.orders = orders;
         orderList = FXCollections.observableArrayList();
@@ -63,13 +75,16 @@ public class AllOrdersViewController {
         lv_orderNumbers.setItems(orderList);
 
     }
+
+    /**
+     * Exports each order's order number, menu items and price to a text file stored in the src directory
+     * of the project.
+     * @throws IOException
+     */
     public void exportOrder() throws IOException {
-        fileChooser = new FileChooser();
-        fileChooser.setTitle("Export Orders");
-        String str = "Hello";
+
         File expFile = new File("src/orders.txt");
         BufferedWriter writer = new BufferedWriter(new FileWriter(expFile));
-        writer.write("Order number, Menu items\n");
 
         for(int i = 0; i < orderIndex.getOrderNumber(); i++){
             double subtotal = 0;
@@ -94,6 +109,10 @@ public class AllOrdersViewController {
         //stage.show();
         //fileChooser.setInitialDirectory();
     }
+
+    /**
+     * Cancels an order selected in the order number list view, removing it from the orders array.
+     */
     @FXML
     public void cancelOrder(){
         Order order = lv_orderNumbers.getSelectionModel().getSelectedItem();
@@ -112,6 +131,11 @@ public class AllOrdersViewController {
         setOrders(this.orders);
         lv_menuItems.setItems(null);
     }
+
+    /**
+     * Displays the price and menu items of an order selected by the user in the order numbers list view
+     * in the menu items list view and the total price text box.
+     */
     @FXML
     public void displayOrder(){
         Order order = lv_orderNumbers.getSelectionModel().getSelectedItem();
@@ -126,10 +150,16 @@ public class AllOrdersViewController {
 
             totalPrice.setText(String.format("%.2f", subTotal + subTotal * 0.06625));
         }
-
-
     }
 
+    /**
+     * Sets AllOrdersViewController as the main controller, allowing the user to interact with
+     * the objects in the view.
+     * @param controller
+     * @param stage
+     * @param primaryStage
+     * @param primaryScene
+     */
     public void setMainController (HelloController controller,
                                    Stage stage,
                                    Stage primaryStage,
@@ -141,6 +171,9 @@ public class AllOrdersViewController {
 
     }
 
+    /**
+     * Allows the user to return to the main menu.
+     */
     @FXML
     public void displayMain() {
         //stage.close();

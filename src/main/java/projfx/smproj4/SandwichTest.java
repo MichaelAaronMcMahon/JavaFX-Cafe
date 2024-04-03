@@ -3,7 +3,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import java.lang.System.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

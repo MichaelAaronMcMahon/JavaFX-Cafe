@@ -38,13 +38,23 @@ public class DonutViewController {
     private int quantity;
     private Donut donut;
     private Order order;
+    @FXML
+    private ImageView donutImage;
+    @FXML
+    private TextField subTotal;
 
+    /**
+     * Sets the current order which has yet to be placed. Allows the DonutViewController to add items to it.
+     * @param order
+     */
     public void setOrder(Order order) {
         this.order = order;
     }
 
-    @FXML
-    private ImageView donutImage;
+    /**
+     * Runs when the controller is initialized. Sets various observableArrayLists for the types and flavors of donuts
+     * as well as the valid quantities. Also sets the quantity and type comboboxes. Creates a new donut object.
+     */
     public void initialize() {
         //stage.setTitle("Donut");
         typeList = FXCollections.observableArrayList("Yeast Donut", "Cake Donut", "Donut Hole");
@@ -63,6 +73,14 @@ public class DonutViewController {
         //donutImage.setImage(new Image("C:\Users\Admin\IdeaProjects\SMProj4\src\main\resources\projfx\smproj4\yeast.jpg");
     }
 
+    /**
+     * Sets DonutViewController as the main controller. HelloController uses this method when the user
+     * wants to navigate to the order donuts page.
+     * @param controller
+     * @param stage
+     * @param primaryStage
+     * @param primaryScene
+     */
     public void setMainController (HelloController controller,
                                    Stage stage,
                                    Stage primaryStage,
@@ -73,6 +91,9 @@ public class DonutViewController {
         this.primaryScene = primaryScene;
     }
 
+    /**
+     * Allows the user to return to the main menu.
+     */
     @FXML
     public void displayMain() {
         //stage.close();
@@ -81,7 +102,10 @@ public class DonutViewController {
         primaryStage.show();
     }
 
-
+    /**
+     * Sets the flavor list view with the appropriate observable array depending on the selection made
+     * by the user in the type list view. Also sets the donut image view with the appropriate image.
+     */
     @FXML
     public void setFlavorList(){
         //String donutType = cmb_type.getTypeSelector();
@@ -115,58 +139,54 @@ public class DonutViewController {
         subTotal.setText(String.valueOf(this.donut.price()));
     }
 
+    /**
+     * Sets the donut flavor enum of the controller and its donut object with the selection made
+     * by the user in the flavor list view.
+     */
     @FXML public void chooseFlavor(){
         String donutFlavor = lv_flavor.getSelectionModel().getSelectedItem();
         if(donutFlavor.equalsIgnoreCase("Boston Cream")){
             this.donutFlavorEnum = DonutFlavor.valueOf("BOSTONCREAM");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("BOSTONCREAM"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("BOSTONCREAM")); }
         if(donutFlavor.equalsIgnoreCase("Jelly-Filled")){
             this.donutFlavorEnum = DonutFlavor.valueOf("JELLYFILLED");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("JELLYFILLED"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("JELLYFILLED")); }
         if(donutFlavor.equalsIgnoreCase("Powdered")){
             this.donutFlavorEnum = DonutFlavor.valueOf("POWDERED");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("POWDERED"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("POWDERED")); }
         if(donutFlavor.equalsIgnoreCase("Old-Fashioned")){
             this.donutFlavorEnum = DonutFlavor.valueOf("OLDFASHIONED");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("OLDFASHIONED"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("OLDFASHIONED")); }
         if(donutFlavor.equalsIgnoreCase("Chocolate")){
             this.donutFlavorEnum = DonutFlavor.valueOf("CHOCOLATE");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("CHOCOLATE"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("CHOCOLATE")); }
         if(donutFlavor.equalsIgnoreCase("Blueberry")){
             this.donutFlavorEnum = DonutFlavor.valueOf("BLUEBERRY");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("BLUEBERRY"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("BLUEBERRY")); }
         if(donutFlavor.equalsIgnoreCase("Pumpkin")){
             this.donutFlavorEnum = DonutFlavor.valueOf("PUMPKIN");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("PUMPKIN"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("PUMPKIN")); }
         if(donutFlavor.equalsIgnoreCase("Strawberry")){
             this.donutFlavorEnum = DonutFlavor.valueOf("STRAWBERRY");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("STRAWBERRY"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("STRAWBERRY")); }
         if(donutFlavor.equalsIgnoreCase("Red Velvet")){
             this.donutFlavorEnum = DonutFlavor.valueOf("REDVELVET");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("REDVELVET"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("REDVELVET")); }
         if(donutFlavor.equalsIgnoreCase("Glazed")){
             this.donutFlavorEnum = DonutFlavor.valueOf("GLAZED");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("GLAZED"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("GLAZED")); }
         if(donutFlavor.equalsIgnoreCase("Raspberry")){
             this.donutFlavorEnum = DonutFlavor.valueOf("RASPBERRY");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("RASPBERRY"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("RASPBERRY")); }
         if(donutFlavor.equalsIgnoreCase("Sprinkled")){
             this.donutFlavorEnum = DonutFlavor.valueOf("SPRINKLED");
-            this.donut.setDonutFlavor(DonutFlavor.valueOf("SPRINKLED"));
-        }
+            this.donut.setDonutFlavor(DonutFlavor.valueOf("SPRINKLED")); }
     }
 
+    /**
+     * Sets the quantity int of the controller and its donut object with the selection made
+     * by the user in the quantity combobox. Also sets the subtotal textfield with the donut's updated price.
+     */
     @FXML public void chooseQuantity(){
         String quantityStr = cmb_quantity.getSelectionModel().getSelectedItem();
         int quantity = Integer.parseInt(quantityStr);
@@ -176,19 +196,15 @@ public class DonutViewController {
         subTotal.setText(String.valueOf(this.donut.price()));
     }
 
-    @FXML
-    private TextField subTotal;
+    /**
+     * Adds the donut object to the order's MenuItem array and creates a new donut object.
+     */
     @FXML public void addToOrder(){
-        //String order = this.donutTypeEnum.getDonutType() + this.donutFlavorEnum.getDonutType() + String.valueOf(this.quantity);
-        //subTotal.setText(order);
-        //MenuItem donut = new Donut()
-        //order.add
         this.donut.setDonutType(this.donutTypeEnum);
         this.donut.setDonutFlavor(this.donutFlavorEnum);
         this.donut.setQuantity(this.quantity);
         this.order.add(donut);
         this.donut = new Donut();
-        //System.out.println(order.getMenuList()[0].price());
     }
 
 

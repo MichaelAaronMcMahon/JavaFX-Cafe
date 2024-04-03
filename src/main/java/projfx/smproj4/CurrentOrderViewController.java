@@ -11,9 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import java.lang.System.*;
-import java.lang.Math.*;
-
 import static java.lang.Math.round;
 
 public class CurrentOrderViewController {
@@ -33,27 +30,40 @@ public class CurrentOrderViewController {
     private TextField tf_totalAmount;
     private boolean opened;
     private Order[] orders;
+    @FXML Button removeButton;
 
+    /**
+     * Runs when the controller is initialized.
+     */
     public void initialize() {
-        //System.out.println(order.getMenuList()[0].price());
 
     }
-//    public Order getOrder(){
-//        return order;
-//    }
+
+    /**
+     * Sets the order object.
+     * @param order
+     */
     public void setOrder(Order order) {
         this.order = order;
-        //System.out.println(this.order.getMenuList()[0].price());
         menuList = FXCollections.observableArrayList(this.order.getMenuList());
         lv_menuItems.setItems(menuList);
         //double subTotal = computeSubTotal();
         setSubTotal();
     }
 
+    /**
+     * Sets the array of orders.
+     * @param orders
+     */
     public void setOrders(Order[] orders){
         this.orders = orders;
     }
 
+    /**
+     * Iterates through all of the menu items in the order object's MenuItem array and computes the sum
+     * of their prices. Then calculates the tax on the subtotal and sets three text fields with the oder's
+     * subtotal, tax and final total.
+     */
     private void setSubTotal(){
         this.order = order;
         int orderLength = this.order.getAddIndex();
@@ -66,7 +76,11 @@ public class CurrentOrderViewController {
         tf_totalAmount.setText(String.format("%.2f", subTotal + subTotal * 0.06625));
 
     }
-    @FXML Button removeButton;
+
+    /**
+     * Removes a menu item selected by the user from the menu items list view from the order.
+     * Then updates the menu items list view and price text fields with the new information
+     */
     @FXML public void removeItem(){
         MenuItem removeItem = lv_menuItems.getSelectionModel().getSelectedItem();
         this.order.remove(removeItem);
@@ -74,6 +88,13 @@ public class CurrentOrderViewController {
 
     }
 
+    /**
+     * Sets CurrentOrderViewController as the main controller, allowing the user to interact with its UI.
+     * @param controller
+     * @param stage
+     * @param primaryStage
+     * @param primaryScene
+     */
     public void setMainController (HelloController controller,
                                    Stage stage,
                                    Stage primaryStage,
@@ -84,6 +105,9 @@ public class CurrentOrderViewController {
         this.primaryScene = primaryScene;
     }
 
+    /**
+     * Returns the user to the main menu.
+     */
     @FXML
     public void displayMain() {
         //stage.close();
@@ -92,7 +116,10 @@ public class CurrentOrderViewController {
         primaryStage.show();
     }
 
-
+    /**
+     * Checks whether the current order has been placed.
+     * @return
+     */
     public boolean checkedIfOrderMade() {
 
         if (opened){
@@ -101,6 +128,10 @@ public class CurrentOrderViewController {
         }
         return opened;
     }
+
+    /**
+     * Sets the opened variable as true.
+     */
     public void setOpened(){
         this.opened = true;
     }
